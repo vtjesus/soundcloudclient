@@ -1,0 +1,57 @@
+{
+  "name": "soundcloud-rpc",
+  "version": "0.0.6",
+  "description": "🎵 A Soundcloud client with Discord Rich Presence support",
+  "author": {
+    "name": "Richard Habitzreuter",
+    "email": "richardhabitzreuter@icloud.com"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "lint": "eslint -c .eslintrc --ext .ts ./src",
+    "start": "npm run build && electron ./tsc/main.js",
+    "dist": "npm run build && electron-builder --dir",
+    "dist-win": "npm run build && electron-builder -w nsis",
+    "dist-mac": "npm run build && electron-builder -m dmg",
+    "dist-linux-deb": "npm run build && electron-builder -l deb",
+    "dist-linux-appimage": "npm run build && electron-builder -l appimage"
+  },
+  "main": "./tsc/main.js",
+  "build": {
+    "appId": "com.richardhbtz.soundcloud-rpc",
+    "productName": "SoundCloud",
+    "asar": true,
+    "files": [
+      "tsc/**/*"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "mac": {
+      "icon": "assets/icons/soundcloud-mac.icns"
+    },
+    "win": {
+      "icon": "assets/icons/soundcloud-win.ico"
+    }
+  },
+  "devDependencies": {
+    "@types/discord-rpc": "^4.0.6",
+    "@types/node": "^20.11.20",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "electron": "^24.3.0",
+    "electron-builder": "^24.9.1",
+    "eslint": "^7.32.0",
+    "typescript": "^4.8.3"
+  },
+  "dependencies": {
+    "@cliqz/adblocker-electron": "^1.28.2",
+    "cross-fetch": "^4.0.0",
+    "discord-rpc": "^4.0.1",
+    "electron-localshortcut": "^3.2.1",
+    "electron-prompt": "^1.7.0",
+    "electron-store": "^8.1.0"
+  }
+}
